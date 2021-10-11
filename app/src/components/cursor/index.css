@@ -1,0 +1,17 @@
+.cursor {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #121212;
+    border-radius: 100%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+}
+.c--clicked {
+    transform: translate(-50%, -50%) scale(0.5);
+    background-color: #121212;
+ }
+ .cursor {
+
+    transition: all 100ms ease;
+    transition-property: opacity, background-color, transform;
+ }
