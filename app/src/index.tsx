@@ -7,8 +7,8 @@ import Cursor from './components/cursor/index.';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Cursor />
     <App />
+    <Cursor />
   </React.StrictMode>,
   document.getElementById('root')
 );
