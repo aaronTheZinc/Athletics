@@ -33,7 +33,7 @@ export const EventsList = ({ events }: EventListProps): JSX.Element => {
             <div className="text-center mt-6">
                 <label className=" text-4xl mt-5 font-bold font-mono">Upcoming Events</label>
             </div>
-            <div>
+            <div className=" overflow-y-scroll">
             {
                 events.map((e, i) => (
                     <div className="mt-6 transform motion-safe:hover:scale-110 ...">

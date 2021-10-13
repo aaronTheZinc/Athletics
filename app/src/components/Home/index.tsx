@@ -17,7 +17,8 @@ const events: Event[] = [
         sport: "Basketball",
         imageUri: "",
         opponent: "Renaissance"
-    }
+    },
+
 ]
 export const Home = (): JSX.Element => {
     return (
