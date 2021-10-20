@@ -1,45 +1,48 @@
-import Airtable from "airtable"; 
+import Airtable from "airtable";
 import type { AirtableQuery, Tables } from "../types"
-import { config } from "../config"
+import { config } from "../config";
+import { Camelize } from "../utils"
 
 const { base: baseKey, apiKey } = config.airtable
 
-const base = new Airtable({apiKey: 'keyvvuP3joa4iDswY'}).base('appcGqp923iGvu9jr');
+const base = new Airtable({ apiKey: 'keyvvuP3joa4iDswY' }).base('appcGqp923iGvu9jr');
 
 /**
  * Query Data From Airtable
  * 
  * @returns Array Of Provided Type
  */
-const Query = async<T>({ table, limit, fields }: AirtableQuery):Promise<T[]> => {
-
+const Query = async<T>({ table, limit, fields }: AirtableQuery): Promise<T[]> => {
+    const result: T[] = []
     const fetchContent = new Promise((resolve: any, reject: any) => {
-        const r = new Array<T>() 
-        base("Events").select({
+        base(table).select({
             maxRecords: limit,
             view: "Grid view"
         }).eachPage((records, next) => {
-            records.forEach((rec) => {
-                const structure: any = {}
-                for(let i = 0; i< fields.length; i++) {
-                    const field = fields[i] 
-                    structure[field] = rec.get(field)
-                };
-                r.push(structure)
-            })
-            next()
+            resolve(records)
         }, (err) => {
-            if (err) { 
+            if (err) {
                 console.error(err);
-                reject(err) 
-                return; }
-        });
-        console.log(r)
-        resolve(r)
+                reject(err)
+                return;
+            }
+        })
     });
 
-   
-   return await fetchContent.then((v) => v as T[]);
+
+    return await fetchContent.then((v: any) => {
+        const results: T[] = []
+        v.forEach((element: any) => {
+            const structure: any = {}
+            for (let i = 0; i < fields.length; i++) {
+                const field = fields[i]
+                structure[Camelize(field)] = element.get(field);
+            };
+            results.push(structure)
+        })
+
+        return results
+    });
 
 
 }

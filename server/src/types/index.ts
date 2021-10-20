@@ -1,5 +1,8 @@
 export enum Tables {
-    EVENTS="Events"
+    EVENTS="Events",
+    BasketballRoster="Roster",
+    FootballRoster="Football"
+
     
 }
 
@@ -11,4 +14,9 @@ export interface AirtableQuery {
 
 export interface Event {
     EventName: string
+}
+export interface Roster {
+    firstName: string
+    lastName: string
+    sport: string
 }
