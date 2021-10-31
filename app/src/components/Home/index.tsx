@@ -1,30 +1,19 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Nav } from "../nav"
-import { EventsList,Event } from "../EventsList"
+import { EventsList } from "../EventsList"
 import "./index.css"
+import { HomePageProps, SportEvent } from "../../interfaces"
 
-const events: Event[] = [
-    {
-        time: "Wednesday, October 4th 8:00 am",
-        team: "Cass Tech",
-        sport: "Basketball",
-        imageUri: "",
-        opponent: "Renaissance"
-    },
-    {
-        time: "Wednesday, October 4th 8:00 am",
-        team: "Cass Tech",
-        sport: "Basketball",
-        imageUri: "",
-        opponent: "Renaissance"
-    },
 
-]
-export const Home = (): JSX.Element => {
+export const Home = ({ events }: HomePageProps): JSX.Element => {
+
+    useEffect(() => {
+        console.log(events)
+    })
     return (
         <div className="w-screen h-screen">
             <Nav />
-            <div className="flex w-screen h-screen">
+            <div className=" sm:block lg:flex w-screen h-screen">
                 <div className="flex absolute">
                     <div style={{ width: "3pc" }} className="vl"></div>
                     <div style={{ width: "3pc" }} className="vl"></div>
@@ -33,7 +22,7 @@ export const Home = (): JSX.Element => {
                     <label className="home-hero-header">Renaissance Athletics</label>
                 </div>
                 <div className="w-1/3">
-                    <EventsList events={events}/>
+                    <EventsList events={events as unknown as SportEvent[]}/>
                 </div>
             </div>
         </div>

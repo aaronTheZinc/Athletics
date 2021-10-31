@@ -4,3 +4,22 @@ export interface Athlete {
     grade: string
     sport: string
 }
+
+export interface SportEvent {
+    eventName: string
+    time: string
+    team: string
+    description: string
+    opponent: string
+    sport: string
+}
+
+export interface Event<T> {
+    name: string
+    time: string
+    meta: T
+}
+export interface HomePageProps {
+    events: Event<SportEvent>[]
+    status?: number
+}

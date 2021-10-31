@@ -1,28 +1,36 @@
 import React from "react"
+import { SportEvent } from "../../interfaces"
 import { Card } from "../Card"
 
 
-export interface Event {
-    time: string
-    team: string
-    opponent: string
-    sport: string
-    imageUri: string
+export interface EventProps {
+   event: SportEvent
 }
 interface EventListProps {
-    events: Event[]
+    events: SportEvent[]
 }
 
 
-const EventCard = ({ event }: any): JSX.Element => {
-    const { time, team, opponent, sport, imageUri }: Event = event
+const EventCard = ({ event: event }: EventProps ): JSX.Element => {
+
+    const { eventName, description, time } = event
+
     return (
        <Card backgroundColor={"#800020"} hasShadow={true}>
           <div >
-             <div>
+             <div className="flex text-white">
+                 <section>
+                <label className="text-2xl">{eventName}</label>
+                </section>
+                <section>
+                    <label className=" text-gold pl-5">{time}</label>
+                </section>
 
               </div> 
-              </div>
+              <div className="p-4 text-white font-thin">
+                  <label>{ description }</label>
+                  </div>
+  </div>
        </Card>
     )
 }
@@ -36,8 +44,8 @@ export const EventsList = ({ events }: EventListProps): JSX.Element => {
             <div className=" overflow-y-scroll">
             {
                 events.map((e, i) => (
-                    <div className="mt-6 transform motion-safe:hover:scale-110 ...">
-                    <EventCard key={i} event={e} />
+                    <div className="group mt-6 transform motion-safe:hover:scale-110 ...">
+                    <EventCard key={i} event={e}  />
                     </div>
                 ))
             }

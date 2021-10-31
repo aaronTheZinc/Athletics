@@ -9,7 +9,7 @@ router.get("/home", (req: Request, res: Response) => {
     Query<Event>({
         table: Tables.EVENTS,
         limit: 200,
-        fields: ["Event Name", "Time"]
+        fields: ["Event Name", "Time", "Description"]
     }).then((r => res.json(r)))
         .catch((e) => console.log(e))
 
@@ -32,4 +32,8 @@ router.get("/roster", ({ query }: Request, res: Response) => {
         res.send("Query Failed. Not Sport Provided.")
     }
 
+})
+// Page content 
+router.get("/football", (req: Request, res: Response) => {
+    con
 })
