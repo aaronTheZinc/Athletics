@@ -3,6 +3,7 @@ export interface Athlete {
     lastName: string
     grade: string
     sport: string
+    position: string
 }
 
 export interface SportEvent {
@@ -22,4 +23,8 @@ export interface Event<T> {
 export interface HomePageProps {
     events: Event<SportEvent>[]
     status?: number
+}
+
+export interface FootballPageProps {
+    roster: Athlete[]
 }

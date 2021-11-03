@@ -3,10 +3,11 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+
 } from "react-router-dom";
 
-import { Home } from "./pages"
+import { Football, Home } from "./pages"
 
 interface RouteType {
     path: string
@@ -15,7 +16,11 @@ interface RouteType {
 const routes: RouteType[] = [
     {
         path: "/",
-        component: Home
+        component: Home,
+    },
+    {
+        path: "/fb",
+        component: Football
     }
 ]
 
@@ -25,7 +30,7 @@ export default function Routes(): JSX.Element {
     return (
         <Router>
             {
-                routes.map(({ path, component }) => <Route path={path} component={component} />)
+                routes.map(({ path, component }) => <Route path={path} component={component}  exact={true} />)
             }
         </Router>
     )

@@ -1,3 +1,4 @@
+import { Table } from "airtable"
 import { Router, Request, Response, request } from "express"
 import { Query } from "../airtable"
 import { Tables, Event, Roster } from "../types"
@@ -24,16 +25,25 @@ router.get("/roster", ({ query }: Request, res: Response) => {
             {
                 table: table!,
                 limit: 200,
-                fields: ["First Name", "Last Name", "Sport"]
+                fields: ["First Name", "Last Name", "Position"]
             }
-        ).then((r) => res.json(r))
+        ).then((r) => {
+            console.log("roster response", r);
+                res.send(r)
+        })
             .catch((e) => res.status(400).send(e))
     } else {
         res.send("Query Failed. Not Sport Provided.")
     }
 
 })
+
+
 // Page content 
 router.get("/football", (req: Request, res: Response) => {
-    con
+    // Query<Roster>({ 
+    //     table: Tables.FootballRoster,
+    //     limit: 200,
+    //     fields: field
+    //  }).then((r) => res.json(r))
 })

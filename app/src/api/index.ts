@@ -1,6 +1,6 @@
 import config from "../config"
 import axios from "axios"
-import { HomePageProps } from "../interfaces"
+import { FootballPageProps, HomePageProps } from "../interfaces"
 const { endPoint } = config
 
 export const loadHomePage = async(): Promise<HomePageProps> => {
@@ -11,3 +11,10 @@ export const loadHomePage = async(): Promise<HomePageProps> => {
     } 
 }
 
+export const loadFootballPage = async(): Promise<FootballPageProps> => {
+    const { status, data: { roster } } = await axios.get(`${endPoint}/content/roster?sport=football`)
+
+    return {
+        roster: roster,
+    }
+}
