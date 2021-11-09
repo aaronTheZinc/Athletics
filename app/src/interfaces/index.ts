@@ -27,4 +27,5 @@ export interface HomePageProps {
 
 export interface FootballPageProps {
     roster: Athlete[]
+    news: any[]
 }

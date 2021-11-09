@@ -5,22 +5,29 @@ import { FootballPageProps } from "../interfaces"
 
 export const Football = (): JSX.Element => {
 
-    const [content, setContent] = useState<any>()
+    const [content, setContent] = useState<FootballPageProps | undefined>()
     useEffect(() => {
-        (async() => {
+        (async () => {
             const c = await loadFootballPage()
-                setContent(c)
-        })()
+            setContent(c)
+        })();
     }, [])
 
-    useEffect(() => {
-        if(content) {
-            console.log(content)
-        }
-    }, [content])
     return (
         <div>
-            <Roster sport="Football" athletes={content} />
+            <div className="flex">
+                <div className="w-2/3">
+
+                </div>
+                <div className="lg:w-1/3">
+                    {
+                        content ? (
+                            <Roster sport="Football" athletes={content.roster} />
+                        ) :
+                            (<label>Loading...</label>)
+                    }
+                </div>
+            </div>
         </div>
     )
 }

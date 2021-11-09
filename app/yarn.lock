@@ -1417,6 +1417,11 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
+"@mjwebs/tailwindcss-frosted@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@mjwebs/tailwindcss-frosted/-/tailwindcss-frosted-1.0.3.tgz#1f4ee3768680babf772c8b831cb5ef02330d85ea"
+  integrity sha512-REHbTdPW2ap8+ePsi4qV+RYPACeOufsr+xEhj9gmwOjjHSxfzGpYMhAxfz/GB5YjzJA2cMIYYpvgIe/kSNKKqw==
+
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz#d4b3549a5db5de2683e0c1071ab4f140904bbf69"
@@ -10868,6 +10873,13 @@ table@^6.0.4:
     lodash "^4.17.20"
     slice-ansi "^4.0.0"
     string-width "^4.2.0"
+
+tailwindcss-filters@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-filters/-/tailwindcss-filters-3.0.0.tgz#d5d40ca018a54b1aa2bdc57aeb6677529c24c8d8"
+  integrity sha512-xhortqs8fSp9id17EnneYhmruA5DfU6K0zvN6/mgDlEXKaHthjXlR74Ta+4lrX5Lp7tp6YigB09WO0TOWn7VEQ==
+  dependencies:
+    lodash "^4.17.15"
 
 "tailwindcss@npm:@tailwindcss/postcss7-compat":
   version "2.2.16"

@@ -25,11 +25,15 @@ module.exports = {
       'secondary': '#ffed4a',
       'danger': '#e3342f',
       "gold": "#FFD700"
-    }
+    },
+    backdropFilter: {
+      'none': 'none',
+      'blur': 'blur(20px)',
+    },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [  require('@mjwebs/tailwindcss-frosted')],
 }

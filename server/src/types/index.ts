@@ -17,8 +17,11 @@ export interface AirtableQuery {
 export interface Event {
     EventName: string
 }
-export interface Roster {
+export interface Athlete {
     firstName: string
     lastName: string
     sport: string
+}
+export interface Roster {
+    players: Athlete[]
 }
