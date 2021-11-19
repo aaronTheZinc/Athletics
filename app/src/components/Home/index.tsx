@@ -15,7 +15,7 @@ export const Home = ({ events }: HomePageProps): JSX.Element => {
         document.title = "Renaissance Athletics"
       }, [])
     return (
-        <div style={{backgroundImage: `url(${RHSAthletics})`, backgroundRepeat: "no-repeat", backgroundSize: '25vw 35vw', backgroundPosition: "300px 90px"}} className="w-screen h-screen">
+        <div style={{backgroundImage: `url(${RHSAthletics})`, backgroundRepeat: "no-repeat", backgroundSize: '25vw 35vw', backgroundPosition: "300px 90px"}} className="w-screen h-screen bg-gray-800 bg-backgroundGray">
             <div className=" sm:block lg:flex w-screen h-screen">
                 <div className="flex absolute">
                 </div>

@@ -7,7 +7,6 @@ interface RosterProps {
 }
 
 export default function Roster({ sport, athletes }: RosterProps) {
-
     return (
         <div className="roster-container">
             <div className="p-8 text-center">

@@ -24,7 +24,10 @@ module.exports = {
       'primary': '#3490dc',
       'secondary': '#ffed4a',
       'danger': '#e3342f',
-      "gold": "#FFD700"
+      "gold": "#FFD700",
+    },
+    colors: {
+      "backgroundGray": "#272727"
     },
     backdropFilter: {
       'none': 'none',
