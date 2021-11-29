@@ -1,2 +1,2 @@
-export { Home } from "./Home"
-export { Football } from "./Football"
+export { Home } from "./Home";
+export { Football } from "./sports";

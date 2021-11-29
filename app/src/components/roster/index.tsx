@@ -1,5 +1,6 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import { Athlete } from "../../interfaces"
+import VanillaTilt from "vanilla-tilt"
 import './index.css'
 interface RosterProps {
     sport: string
@@ -7,10 +8,23 @@ interface RosterProps {
 }
 
 export default function Roster({ sport, athletes }: RosterProps) {
+    const options = {
+        scale: 1.01,
+        speed: 1000,
+        max: 10
+      };
+    const containerRef = useRef();
+    function capitalize(s)
+{
+    return s[0].toUpperCase() + s.slice(1);
+}
+    useEffect(() => {
+        VanillaTilt.init(containerRef.current, options)
+    }, [])
     return (
-        <div className="roster-container">
+        <div ref={containerRef} className="roster-container">
             <div className="p-8 text-center">
-            <h2 className="text-3xl font-bold">{sport}</h2>
+            <h2 className="text-3xl font-bold">{capitalize(sport)}</h2>
             </div>
             <div className="p-8">
                 {

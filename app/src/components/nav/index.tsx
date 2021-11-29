@@ -13,7 +13,7 @@ export const Nav = (): JSX.Element => {
             <div className="flex justify-center">
             {
                 sports.map((s) => (
-                    <SportNode sport={s} link={"/"} />
+                    <SportNode key={s} sport={s} link={"/"} />
                 ))
             }
             </div>

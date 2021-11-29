@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Basketball, FootBall, Soccer, VolleyBall } from "../../assets/images"
 import { useHistory } from "react-router-dom"
+import { AppContext } from "../../hooks"
 interface SportNodeProps {
     link: string
     sport: string
@@ -20,12 +21,11 @@ const MapIcons = (sport: string): string => {
 }
 
 export default function SportNode ({ sport, link }: SportNodeProps) {
+    const { setSport } = useContext(AppContext)
     const icon = MapIcons(sport)
     const history = useHistory()
-    
-    const navigate = (route: string) => history.push(route) 
     return (
-        <div onClick={() => navigate("/fb")} className="flex m-8 border-white border-1">
+        <div onClick={() => setSport(sport)} className="flex m-8 border-white border-1">
             <img style={{width:"2pc", height: "2pc"}} src={icon} />
             <label className="text-white ml-8 mt-2">{sport}</label>
         </div>

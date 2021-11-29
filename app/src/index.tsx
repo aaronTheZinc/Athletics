@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'antd/dist/antd.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Cursor from './components/cursor/index.';
+import { AppProvider } from "./hooks"
 
 ReactDOM.render(
   <React.StrictMode>
+    <AppProvider>
     <App />
     {/* <Cursor /> */}
+    </AppProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

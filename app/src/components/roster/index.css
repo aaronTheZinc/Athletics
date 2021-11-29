@@ -1,8 +1,11 @@
 .roster-container {
-    height: 80vh;
-    width: auto;
-    border-radius: 15px;
-    margin-top: 5vh;
-    margin-right: 5%;
-    background-color: burlywood;
+  height: 70vh;
+  width: auto;
+  border-radius: 15px;
+  margin-top: 5vh;
+  margin-right: 20%;
+  background-color: #f2f2f2;
+  -webkit-box-shadow: 15px 10px 0px 5px rgba(128, 0, 32, 1);
+  -moz-box-shadow: 15px 10px 0px 5px rgba(128, 0, 32, 1);
+  box-shadow: 15px 10px 0px 5px rgba(128, 0, 32, 1);
 }

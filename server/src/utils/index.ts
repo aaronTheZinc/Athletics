@@ -1,2 +1,2 @@
-export { MapSport } from './mapping'
-export { Camelize } from "./format"
+export { MapSport } from "./mapping";
+export { Camelize, capitalizeFirstLetter } from "./format";

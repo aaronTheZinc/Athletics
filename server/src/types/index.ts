@@ -1,27 +1,27 @@
 export enum Tables {
-    EVENTS="Events",
-    BasketballRoster="Roster",
-    FootballRoster="Football Roster",
+  EVENTS = "Events",
+  BasketballRoster = "Basketball Roster",
+  FootballRoster = "Football Roster",
 
-
-
-    
+  BasketBallSchedule = "Basketball Schedule",
+  FootballSchedule = "Football Schedule",
+  Stats = "Stats",
 }
 
 export interface AirtableQuery {
-    table: Tables,
-    limit: number
-    fields: string[]
+  table: Tables | string;
+  limit: number;
+  fields: string[];
 }
 
 export interface Event {
-    EventName: string
+  EventName: string;
 }
 export interface Athlete {
-    firstName: string
-    lastName: string
-    sport: string
+  firstName: string;
+  lastName: string;
+  sport: string;
 }
 export interface Roster {
-    players: Athlete[]
+  players: Athlete[];
 }
