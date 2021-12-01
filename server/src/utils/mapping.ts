@@ -4,23 +4,23 @@ import { Tables } from "../types";
 //Defaults to Basketball Roster when invalid sport is queried.
 export const MapSport = (sport: string): Tables => {
   switch (sport) {
-    case "basketball":
-      return Tables.BasketballRoster;
+    case "b-basketball":
+      return Tables.BoysBasketballRoster;
     case "football":
       return Tables.FootballRoster;
 
     default:
-      return Tables.BasketballRoster;
+      return Tables.BoysBasketballRoster;
   }
 };
 export const MapSportSchedule = (sport: string): Tables => {
   switch (sport) {
-    case "basketball":
-      return Tables.BasketBallSchedule;
-    case "football":
+    case "b-basketball":
+      return Tables.BoysBasketBallSchedule;
+    case "b-football":
       return Tables.FootballSchedule;
 
     default:
-      return Tables.BasketBallSchedule;
+      return Tables.BoysBasketBallSchedule;
   }
 };

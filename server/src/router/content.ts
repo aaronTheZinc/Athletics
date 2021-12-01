@@ -40,26 +40,37 @@ router.get("/roster", ({ query }: Request, res: Response) => {
 router.get("/sport", async (req: Request, res: Response) => {
   const { sport } = req.query;
   if (sport) {
-    const table = MapSport(sport!.toString());
-    const roster = await Query<Roster>({
-      table: table!,
-      limit: 200,
-      fields: ["First Name", "Last Name", "Grade", "Position"],
-    }).catch((e) => res.send(e));
-    const schedule = await Query<any>({
-      table: MapSportSchedule(sport.toString()),
-      limit: 200,
-      fields: ["Title", "Day", "Time", "Location"],
-    }).catch((e) => res.send(e));
-    const stats = (await Query<any>({
-      table: Tables.Stats,
-      limit: 200,
-      fields: ["Wins", "Losses", "Sport"],
-    }).catch((e) => res.send(e))) as any[];
-    const { wins, losses } = stats.filter(
-      (el) => el.sport == capitalizeFirstLetter(sport.toString())
-    )[0];
-    res.json({ schedule, roster, wins, losses });
+    try {
+      const table = MapSport(sport!.toString());
+      const roster = await Query<Roster>({
+        table: table!,
+        limit: 200,
+        fields: ["First Name", "Last Name", "Grade", "Position"],
+      }).catch((e) => res.send(e));
+      const schedule = await Query<any>({
+        table: MapSportSchedule(sport.toString()),
+        limit: 200,
+        fields: ["Title", "Day", "Time", "Location"],
+      }).catch((e) => res.send(e));
+      const stats = (await Query<any>({
+        table: Tables.Stats,
+        limit: 200,
+        fields: ["Wins", "Losses", "Sport"],
+      }).catch((e) => res.send(e))) as any[];
+
+      console.log(`sport to look for ${sport}`, stats);
+
+      const { wins, losses } = stats?.filter(
+        (el) => el.sport == sport.toString()
+      )[0];
+      console.log(wins, losses);
+      res.json({ schedule, roster, wins, losses });
+    } catch (e) {
+      console.error("an error occured...");
+      res.status(500).json({
+        msg: "internal server error",
+      });
+    }
   } else {
     res.status(503).json({ err: "must provide sport." });
   }

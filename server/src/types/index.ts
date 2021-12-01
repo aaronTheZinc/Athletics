@@ -1,9 +1,10 @@
 export enum Tables {
   EVENTS = "Events",
-  BasketballRoster = "Basketball Roster",
+  BoysBasketballRoster = "Boys Basketball Roster",
+  LadysBasketball = "Lady Basketball Roster",
   FootballRoster = "Football Roster",
 
-  BasketBallSchedule = "Basketball Schedule",
+  BoysBasketBallSchedule = "Basketball Schedule",
   FootballSchedule = "Football Schedule",
   Stats = "Stats",
 }
