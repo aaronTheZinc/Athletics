@@ -45,7 +45,13 @@ router.get("/sport", async (req: Request, res: Response) => {
       const roster = await Query<Roster>({
         table: table!,
         limit: 200,
-        fields: ["First Name", "Last Name", "Grade", "Position"],
+        fields: [
+          "First Name",
+          "Last Name",
+          "Grade",
+          "Position",
+          "Jersey Number",
+        ],
       }).catch((e) => res.send(e));
       const schedule = await Query<any>({
         table: MapSportSchedule(sport.toString()),

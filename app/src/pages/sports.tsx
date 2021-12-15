@@ -33,26 +33,30 @@ const columns = [
 ];
 
 const handleSportTypeChange = (
+  isVarsity: boolean,
   sport: string,
   setHeaderRef: (s: string) => void
 ) => {
-  const title = sportCodeToName(sport);
+  const title = sportCodeToName(sport, isVarsity);
   setHeaderRef(title);
 };
 
 export const Football = (): JSX.Element => {
-  const { sport } = useContext(AppContext);
+  const { sport, setSport } = useContext(AppContext);
   const [content, setContent] = useState<Sport>();
   const [tableContent, setTableContent] = useState<SportSchduleTableRow[]>();
   const [isLoading, setIsLoading] = useState<boolean>();
   const [sportName, setSportName] = useState<string>("");
   const [sportGender, setSportGender] = useState<string>();
+  const [isVarsity, setIsVarsity] = useState<boolean>(true);
   const tabeleRef = useRef();
   const sportTypeRef = useRef();
+  const varsityToggleRef = useRef();
 
   useEffect(() => {
     VanillaTilt.init(tabeleRef.current, options);
     VanillaTilt.init(sportTypeRef.current, options);
+    VanillaTilt.init(varsityToggleRef.current, options);
   }, []);
 
   const options = {
@@ -69,6 +73,8 @@ export const Football = (): JSX.Element => {
     console.log(sport);
     document.title = sport;
   }, [sport]);
+
+  useEffect(() => {}, []);
 
   useEffect(() => {
     if (content) {
@@ -89,7 +95,7 @@ export const Football = (): JSX.Element => {
   }, [content]);
 
   useEffect(() => {
-    setSportName(sportCodeToName(sport));
+    setSportName(sportCodeToName(sport, isVarsity));
   }, [sport]);
 
   return (
@@ -118,6 +124,13 @@ export const Football = (): JSX.Element => {
                     initialValue={""}
                     options={["Boys", "Girls"]}
                     setValue={(v) => setSportGender(v)}
+                  />
+                </div>
+                <div ref={varsityToggleRef} className="ml-48 items-center mt-6">
+                  <SportTypeSwitch
+                    initialValue={""}
+                    options={["Varsity", "Junior Varisty"]}
+                    setValue={(s: string) => console.log(s)}
                   />
                 </div>
               </div>

@@ -27,7 +27,8 @@ module.exports = {
       "gold": "#FFD700",
     },
     colors: {
-      "backgroundGray": "#272727"
+      "backgroundGray": "#272727",
+      "orange": "#FFA500"
     },
     backdropFilter: {
       'none': 'none',

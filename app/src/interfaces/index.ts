@@ -4,6 +4,7 @@ export interface Athlete {
   grade: string;
   sport: string;
   position: string;
+  jerseyNumber: number;
 }
 
 export interface SportEvent {

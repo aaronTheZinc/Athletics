@@ -3,8 +3,8 @@ export enum Tables {
   BoysBasketballRoster = "Boys Basketball Roster",
   LadysBasketball = "Lady Basketball Roster",
   FootballRoster = "Football Roster",
-
-  BoysBasketBallSchedule = "Basketball Schedule",
+  VarsityLadiesBasketBall = "V-Ladys Basketball",
+  BoysBasketBallSchedule = "V-Basketball Schedule",
   FootballSchedule = "Football Schedule",
   Stats = "Stats",
 }
