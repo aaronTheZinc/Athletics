@@ -10,13 +10,13 @@ interface SportNodeProps {
 
 const MapIcons = (sport: string): string => {
   switch (sport) {
-    case "Football":
+    case "football":
       return FootBall;
-    case "Volleyball":
+    case "volleyball":
       return VolleyBall;
-    case "Soccer":
+    case "soccer":
       return Soccer;
-    case "Basketball":
+    case "basketball":
       return Basketball;
   }
 };

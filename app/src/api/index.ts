@@ -20,7 +20,7 @@ export const loadFootballPage = async (): Promise<FootballPageProps> => {
   };
 };
 
-export const loadSportData = async (sport: string): Promise<Sport> => {
-  const { data } = await axios.get(`${endPoint}/content/sport?sport=${sport}`);
+export const loadSportData = async (sport: string, { isVarsity, gender }: any): Promise<Sport> => {
+  const { data } = await axios.get(`${endPoint}/content/sport?sport=${sport}&gender=${gender}&varsity=${isVarsity}`);
   return data;
 };

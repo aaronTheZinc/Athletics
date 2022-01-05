@@ -3,6 +3,7 @@ import { Router, Request, Response, request } from "express";
 import { Query } from "../airtable";
 import { Tables, Event, Roster } from "../types";
 import { MapSport, capitalizeFirstLetter } from "../utils";
+import { findSport } from "../sports"
 import { MapSportSchedule } from "../utils/mapping";
 export const router = Router();
 
@@ -38,12 +39,16 @@ router.get("/roster", ({ query }: Request, res: Response) => {
 });
 
 router.get("/sport", async (req: Request, res: Response) => {
-  const { sport } = req.query;
+  // console.log(req.query)
+  const { sport, gender, varsity } = req.query;
+  console.log("v", varsity)
+  const result = findSport({ sport, gender, isVarsity: (varsity === "true") });
+  console.log(result)
   if (sport) {
     try {
       const table = MapSport(sport!.toString());
       const roster = await Query<Roster>({
-        table: table!,
+        table: result.table,
         limit: 200,
         fields: [
           "First Name",
@@ -54,7 +59,7 @@ router.get("/sport", async (req: Request, res: Response) => {
         ],
       }).catch((e) => res.send(e));
       const schedule = await Query<any>({
-        table: MapSportSchedule(sport.toString()),
+        table: result.schedule,
         limit: 200,
         fields: ["Title", "Day", "Time", "Location"],
       }).catch((e) => res.send(e));
@@ -65,14 +70,17 @@ router.get("/sport", async (req: Request, res: Response) => {
       }).catch((e) => res.send(e))) as any[];
 
       console.log(`sport to look for ${sport}`, stats);
-
+      console.log(result.title)
       const { wins, losses } = stats?.filter(
-        (el) => el.sport == sport.toString()
+        (el) => el.sport == result.title
       )[0];
-      console.log(wins, losses);
-      res.json({ schedule, roster, wins, losses });
+      console.log("schedule ->", schedule)
+      const respObj = { schedule, roster, wins, losses, title: result.title }
+      // console.log(respObj)
+      res.json(respObj).end();
     } catch (e) {
       console.error("an error occured...");
+      console.log(e)
       res.status(500).json({
         msg: "internal server error",
       });

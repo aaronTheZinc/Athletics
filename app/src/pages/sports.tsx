@@ -47,7 +47,7 @@ export const Football = (): JSX.Element => {
   const [tableContent, setTableContent] = useState<SportSchduleTableRow[]>();
   const [isLoading, setIsLoading] = useState<boolean>();
   const [sportName, setSportName] = useState<string>("");
-  const [sportGender, setSportGender] = useState<string>();
+  const [sportGender, setSportGender] = useState<string>("boys");
   const [isVarsity, setIsVarsity] = useState<boolean>(true);
   const tabeleRef = useRef();
   const sportTypeRef = useRef();
@@ -67,14 +67,15 @@ export const Football = (): JSX.Element => {
 
   useEffect(() => {
     (async () => {
-      const data = await loadSportData(sport);
+      const data = await loadSportData(sport, { isVarsity, gender: sportGender });
+      setSportName(data.title)
       setContent(data);
     })();
     console.log(sport);
     document.title = sport;
-  }, [sport]);
+  }, [sport, sportGender, isVarsity]);
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   useEffect(() => {
     if (content) {
@@ -94,14 +95,15 @@ export const Football = (): JSX.Element => {
     }
   }, [content]);
 
-  // mutate sport id
-  useEffect(() => {
-    
-  }, [sportGender, isVarsity])
 
   useEffect(() => {
     setSportName(sportCodeToName(sport, isVarsity));
   }, [sport]);
+
+
+  useEffect(() => {
+    console.log(isVarsity)
+  }, [isVarsity])
 
   return (
     <div ref={tabeleRef}>
@@ -128,14 +130,14 @@ export const Football = (): JSX.Element => {
                   <SportTypeSwitch
                     initialValue={""}
                     options={["Boys", "Girls"]}
-                    setValue={(v) => setSportGender(v)}
+                    setValue={(v) => setSportGender(v.toLowerCase())}
                   />
                 </div>
                 <div ref={varsityToggleRef} className="ml-48 items-center mt-6">
                   <SportTypeSwitch
                     initialValue={""}
                     options={["Varsity", "Junior Varisty"]}
-                    setValue={(s: string) => console.log(s)}
+                    setValue={(s: string) => setIsVarsity(s === "Varsity")}
                   />
                 </div>
               </div>

@@ -7,7 +7,7 @@ export const AppContext = createContext<AppContextType>({
 } as AppContextType);
 
 export const AppProvider = ({ children }): JSX.Element => {
-  const [sport, setSport] = useState<string>("b-basketball");
+  const [sport, setSport] = useState<string>("basketball");
   useEffect(() => {
     console.log(`sport mutated to ${sport}`);
   }, [sport]);

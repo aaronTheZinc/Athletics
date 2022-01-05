@@ -46,6 +46,7 @@ export interface FootballPageProps {
   news: any[];
 }
 export interface Sport {
+  title: string;
   roster?: Athlete[];
   sport?: string;
   wins?: number;

@@ -2,7 +2,7 @@ import React from "react";
 import SportNode from "./sport-node";
 import { useHistory } from "react-router-dom";
 import { Mascot } from "../../assets/images";
-const sports = ["Football", "Basketball", "Soccer", "Volleyball"];
+const sports = ["football", "basketball", "soccer", "volleyball"];
 
 export const Nav = (): JSX.Element => {
   return (
