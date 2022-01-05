@@ -34,14 +34,14 @@ export const dataToSportId = ({
 }: SportData): string => {
   if (varsity) {
     if (gender === "boy") {
-      switch (e) {
+      switch (sport) {
         case "basketball":
           return "vb-basketball";
         case "football":
           return "football";
 
         default:
-          return;
+          return sport;
       }
     }
   }

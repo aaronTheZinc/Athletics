@@ -94,6 +94,11 @@ export const Football = (): JSX.Element => {
     }
   }, [content]);
 
+  // mutate sport id
+  useEffect(() => {
+    
+  }, [sportGender, isVarsity])
+
   useEffect(() => {
     setSportName(sportCodeToName(sport, isVarsity));
   }, [sport]);
